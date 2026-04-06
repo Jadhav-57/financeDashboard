@@ -1,5 +1,5 @@
-import {  useScroll, useTransform } from "framer-motion";
-import { motion, Variants } from "framer-motion";
+import { motion,  useScroll, useTransform } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import hero from "../assets/hero.jpg";
 
@@ -36,8 +36,6 @@ const items = [
   },
 ];
 
-// 🔥 Reordering colors (right side animation)
-const initialOrder = ["#ff0088", "#dd00ee", "#9911ff", "#0d63f8"];
 
 export default function Home() {
   const containerRef = useRef(null);
