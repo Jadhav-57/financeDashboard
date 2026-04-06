@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import hero from "../assets/hero.jpg";
 
 const items = [
   {
@@ -70,15 +71,26 @@ export default function Home() {
         <div className="grid md:grid-cols-2 w-full relative z-10 items-center">
 
           {/* LEFT */}
-          <div className="space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold text-red-500">
-              Balance your Expence
-            </h1>
+          <div className="flex flex-col items-center justify-center text-center space-y-6">
+  
+  {/* LOGO */}
+  <img
+    src={hero}
+    alt="Financial Dashboard"
+    className="w-32 md:w-40 object-contain rounded-full shadow-lg"
+  />
 
-            <p className="text-gray-600 text-lg max-w-md">
-              Smart analytics to track, manage and grow your finances.
-            </p>
-          </div>
+  {/* HEADING */}
+  <h1 className="text-5xl md:text-7xl font-bold text-red-500">
+    Balance your Expense
+  </h1>
+
+  {/* SUBTEXT */}
+  <p className="text-gray-600 text-lg max-w-md">
+    Smart analytics to track, manage and grow your finances.
+  </p>
+
+</div>
 
           {/* RIGHT → Reordering animation */}
           <div className="flex justify-center">
