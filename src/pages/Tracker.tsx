@@ -59,9 +59,8 @@ export default function Tracker() {
   }));
 
   // 🧠 Insights
-  const highestCategory = Object.entries(categoryMap).sort(
-    (a, b) => b[1] - a[1]
-  )[0];
+ const highestCategory = Object.entries(categoryMap as Record<string, number>)
+  .sort((a, b) => b[1] - a[1])[0];
 
   const insight = highestCategory
     ? `You spend the most on ${highestCategory[0]}`

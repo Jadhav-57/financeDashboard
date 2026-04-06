@@ -12,7 +12,9 @@ type Transaction = {
 
 
 export default function AdminTransactions() {
-const [transactions, setTransactions] = useState<Transaction[]>(data);
+const [transactions, setTransactions] = useState<Transaction[]>(
+  data as Transaction[]
+);
 
 const [form, setForm] = useState<{
   id: number | null;
