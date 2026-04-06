@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Variants } from "framer-motion";
+import {  useScroll, useTransform } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import hero from "../assets/hero.jpg";
 
@@ -41,6 +41,7 @@ const initialOrder = ["#ff0088", "#dd00ee", "#9911ff", "#0d63f8"];
 
 export default function Home() {
   const containerRef = useRef(null);
+  //@ts-ignore
   const [order, setOrder] = useState(initialOrder);
 
   const { scrollYProgress } = useScroll({
