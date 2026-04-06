@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import axios from "axios";
 import { useAuthStore } from "../store/authStore";
 
 export default function Nav() {
@@ -22,7 +21,7 @@ const { user, role, isAuthenticated, login, logout, loadUser } = useAuthStore();
   ];
 
   // 🔐 Auth handler (API + fallback)
-  const handleLogin = (type) => {
+ const handleLogin = (type: "admin" | "user") => {
   if (type === "admin") {
     login({ name: "Admin" }, "admin");
   } else {

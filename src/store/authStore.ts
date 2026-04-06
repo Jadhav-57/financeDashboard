@@ -1,39 +1,42 @@
 import { create } from "zustand";
 
-export const useAuthStore = create((set) => ({
+type User = {
+  name: string;
+};
+
+type AuthState = {
+  user: User | null;
+  role: string | null;
+  isAuthenticated: boolean;
+  login: (user: User, role: string) => void;
+  logout: () => void;
+  loadUser: () => void;
+};
+
+export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   role: null,
   isAuthenticated: false,
 
-  login: (userData, role) => {
-    localStorage.setItem("user", JSON.stringify(userData));
+  login: (user, role) => {
+    localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("role", role);
 
-    set({
-      user: userData,
-      role: role,
-      isAuthenticated: true,
-    });
+    set({ user, role, isAuthenticated: true });
   },
 
   logout: () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("role");
-
-    set({
-      user: null,
-      role: null,
-      isAuthenticated: false,
-    });
+    localStorage.clear();
+    set({ user: null, role: null, isAuthenticated: false });
   },
 
   loadUser: () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = localStorage.getItem("user");
     const role = localStorage.getItem("role");
 
     if (user && role) {
       set({
-        user,
+        user: JSON.parse(user),
         role,
         isAuthenticated: true,
       });

@@ -1,52 +1,81 @@
 import { useState } from "react";
 import data from "../data/transactions.json";
 
+
+type Transaction = {
+  id: number;
+  date: string;
+  amount: number;
+  category: string;
+  type: "income" | "expense";
+};
+
+
 export default function AdminTransactions() {
-  const [transactions, setTransactions] = useState(data);
-  const [form, setForm] = useState({
-    id: null,
-    date: "",
-    amount: "",
-    category: "",
-    type: "expense",
-  });
+const [transactions, setTransactions] = useState<Transaction[]>(data);
+
+const [form, setForm] = useState<{
+  id: number | null;
+  date: string;
+  amount: number;
+  category: string;
+  type: "income" | "expense";
+}>({
+  id: null,
+  date: "",
+  amount: 0,
+  category: "",
+  type: "expense",
+});
 
   const [isEditing, setIsEditing] = useState(false);
 
   // Handle input
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const { name, value } = e.target;
+
+  setForm({
+    ...form,
+    [name]: name === "amount" ? Number(value) : value,
+  });
+};
 
   // Add / Update
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (isEditing) {
-      setTransactions((prev) =>
-        prev.map((t) => (t.id === form.id ? form : t))
-      );
-      setIsEditing(false);
-    } else {
-      setTransactions([
-        ...transactions,
-        { ...form, id: Date.now(), amount: Number(form.amount) },
-      ]);
-    }
+  if (isEditing && form.id !== null) {
+    setTransactions((prev) =>
+      prev.map((t) => (t.id === form.id ? { ...form, id: form.id } : t))
+    );
+    setIsEditing(false);
+  } else {
+    setTransactions([
+      ...transactions,
+      { ...form, id: Date.now() },
+    ]);
+  }
 
-    setForm({ id: null, date: "", amount: "", category: "", type: "expense" });
-  };
+  setForm({
+    id: null,
+    date: "",
+    amount: 0,
+    category: "",
+    type: "expense",
+  });
+};
 
   // Edit
-  const handleEdit = (item) => {
-    setForm(item);
-    setIsEditing(true);
-  };
+const handleEdit = (item: Transaction) => {
+  setForm(item);
+  setIsEditing(true);
+};
+
+const handleDelete = (id: number) => {
+  setTransactions(transactions.filter((t) => t.id !== id));
+};
 
   // Delete
-  const handleDelete = (id) => {
-    setTransactions(transactions.filter((t) => t.id !== id));
-  };
 
   return (
     <div className="p-6 max-w-6xl mx-auto space-y-6">

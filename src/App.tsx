@@ -10,7 +10,7 @@ import About from "./pages/About"
 import Tracker from "./pages/Tracker"
 import AdminTransactions from './pages/Admin';
 
-export function AdminRoute({ children }) {
+export function AdminRoute({ children }: { children: React.ReactNode }) {
   const { role } = useAuthStore();
 
   if (role !== "admin") {
