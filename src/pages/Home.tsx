@@ -36,11 +36,11 @@ const items = [
 ];
 
 // 🔥 Reordering colors (right side animation)
-const initialOrder = ["#ff0088", "#dd00ee", "#9911ff", "#0d63f8"];
+// const initialOrder = ["#ff0088", "#dd00ee", "#9911ff", "#0d63f8"];
 
 export default function Home() {
   const containerRef = useRef(null);
-  const [order, setOrder] = useState(initialOrder);
+  // const [order, setOrder] = useState(initialOrder);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -51,13 +51,13 @@ export default function Home() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
   // 🔄 shuffle animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setOrder((prev) => [...prev].sort(() => Math.random() - 0.5));
-    }, 1500);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setOrder((prev) => [...prev].sort(() => Math.random() - 0.5));
+  //   }, 1500);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div className="bg-white">
