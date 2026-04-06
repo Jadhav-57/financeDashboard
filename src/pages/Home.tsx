@@ -1,5 +1,4 @@
-import { motion,  useScroll, useTransform } from "framer-motion";
-import type { Variants } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import hero from "../assets/hero.jpg";
 
@@ -36,42 +35,17 @@ const items = [
   },
 ];
 
+// 🔥 Reordering colors (right side animation)
+const initialOrder = ["#ff0088", "#dd00ee", "#9911ff", "#0d63f8"];
 
 export default function Home() {
   const containerRef = useRef(null);
-  //@ts-ignore
   const [order, setOrder] = useState(initialOrder);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
   });
-
   
-
-  const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring" as const,
-      stiffness: 120,
-      damping: 15,
-    },
-  },
-};
-
 
   // smoother based on items
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
@@ -121,47 +95,46 @@ const item: Variants = {
 
           {/* RIGHT → Reordering animation */}
          <div className="flex justify-center">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl text-center"
-      >
-        {[
-          {
-            title: "Track Expenses",
-            desc: "Monitor your daily spending with real-time insights.",
-          },
-          {
-            title: "Smart Analytics",
-            desc: "Visualize income vs expenses and make better decisions.",
-          },
-          {
-            title: "Category Insights",
-            desc: "Understand where your money goes the most.",
-          },
-          {
-            title: "Admin Control",
-            desc: "Add, edit, and manage transactions easily.",
-          },
-        ].map((card, index) => (
-          <motion.div
-            key={index}
-            variants={item}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="p-5 rounded-2xl shadow-md hover:shadow-xl transition bg-white cursor-pointer"
-          >
-            <h3 className="text-lg font-semibold text-red-500">
-              {card.title}
-            </h3>
-            <p className="text-gray-600 text-sm mt-2">
-              {card.desc}
-            </p>
-          </motion.div>
-        ))}
-      </motion.div>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl text-center">
+
+    <div className="p-4 rounded-xl shadow hover:shadow-lg transition bg-white">
+      <h3 className="text-lg font-semibold text-red-500">
+        Track Expenses
+      </h3>
+      <p className="text-gray-600 text-sm">
+        Monitor your daily spending with real-time insights.
+      </p>
     </div>
+
+    <div className="p-4 rounded-xl shadow hover:shadow-lg transition bg-white">
+      <h3 className="text-lg font-semibold text-red-500">
+        Smart Analytics
+      </h3>
+      <p className="text-gray-600 text-sm">
+        Visualize income vs expenses and make better decisions.
+      </p>
+    </div>
+
+    <div className="p-4 rounded-xl shadow hover:shadow-lg transition bg-white">
+      <h3 className="text-lg font-semibold text-red-500">
+        Category Insights
+      </h3>
+      <p className="text-gray-600 text-sm">
+        Understand where your money goes the most.
+      </p>
+    </div>
+
+    <div className="p-4 rounded-xl shadow hover:shadow-lg transition bg-white">
+      <h3 className="text-lg font-semibold text-red-500">
+        Admin Control
+      </h3>
+      <p className="text-gray-600 text-sm">
+        Add, edit, and manage transactions easily.
+      </p>
+    </div>
+
+  </div>
+</div>
 
         </div>
       </section>
