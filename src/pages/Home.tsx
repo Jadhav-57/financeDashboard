@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Variants } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import hero from "../assets/hero.jpg";
 
@@ -46,6 +47,8 @@ export default function Home() {
     target: containerRef,
   });
 
+  
+
   const container = {
   hidden: { opacity: 0 },
   show: {
@@ -56,13 +59,14 @@ export default function Home() {
   },
 };
 
-const item = {
+
+const item: Variants = {
   hidden: { opacity: 0, y: 40 },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 120,
       damping: 15,
     },
