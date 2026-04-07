@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div className="min-h-[90vh] px-6 md:px-16 py-12 bg-gray-50">
 
-      {/* HEADER */}
+     
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-red-500">About Me</h1>
         <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -10,10 +10,10 @@ export default function About() {
         </p>
       </div>
 
-      {/* MAIN SECTION */}
+     
       <div className="grid md:grid-cols-2 gap-10 items-center">
 
-        {/* LEFT - TEXT */}
+        
         <div className="space-y-6">
           <h2 className="text-2xl font-semibold text-gray-800">
             Hi, I'm Aditya 👋
@@ -35,7 +35,7 @@ export default function About() {
             and <span className="text-red-500 font-medium">prediction systems</span>, combining UI/UX with meaningful insights.
           </p>
 
-          {/* SKILLS */}
+          
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-3">
               Skills
@@ -54,7 +54,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* RIGHT - CARD UI */}
+        
         <div className="bg-white rounded-2xl shadow-lg p-8 space-y-6">
 
           <div>

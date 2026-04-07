@@ -35,8 +35,7 @@ const items = [
   },
 ];
 
-// 🔥 Reordering colors (right side animation)
-// const initialOrder = ["#ff0088", "#dd00ee", "#9911ff", "#0d63f8"];
+
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -47,10 +46,9 @@ export default function Home() {
   });
   
 
-  // smoother based on items
+  
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
-  // 🔄 shuffle animation
   // useEffect(() => {
   //   const interval = setInterval(() => {
   //     setOrder((prev) => [...prev].sort(() => Math.random() - 0.5));
@@ -62,38 +60,36 @@ export default function Home() {
   return (
     <div className="bg-white">
 
-      {/* HERO */}
+      
       <section className="h-screen flex items-center px-10 relative overflow-hidden">
         
-        {/* Background */}
+       
         <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-100 to-red-50"></div>
 
-        {/* Layout */}
+        
         <div className="grid md:grid-cols-2 w-full relative z-10 items-center">
 
-          {/* LEFT */}
+          
           <div className="flex flex-col items-center justify-center text-center space-y-6">
   
-  {/* LOGO */}
+  
   <img
     src={hero}
     alt="Financial Dashboard"
     className="w-32 md:w-40 object-contain rounded-full shadow-lg"
   />
 
-  {/* HEADING */}
+  
   <h1 className="text-5xl md:text-7xl font-bold text-red-500">
     Balance your Expense
   </h1>
 
-  {/* SUBTEXT */}
   <p className="text-gray-600 text-lg max-w-md">
     Smart analytics to track, manage and grow your finances.
   </p>
 
 </div>
 
-          {/* RIGHT → Reordering animation */}
          <div className="flex justify-center">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl text-center">
 
@@ -139,10 +135,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HORIZONTAL SCROLL */}
       <section
         ref={containerRef}
-        className="h-[250vh] relative"  // 👈 reduced height (no extra space)
+        className="h-[250vh] relative"  
       >
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
           

@@ -20,7 +20,6 @@ const { user, role, isAuthenticated, login, logout, loadUser } = useAuthStore();
     { name: "Tracker", path: "/tracker" },
   ];
 
-  // 🔐 Auth handler (API + fallback)
  const handleLogin = (type: "admin" | "user") => {
   if (type === "admin") {
     login({ name: "Admin" }, "admin");
@@ -32,21 +31,18 @@ const { user, role, isAuthenticated, login, logout, loadUser } = useAuthStore();
   return (
     <nav className="w-full shadow-md px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-50 backdrop-blur bg-white/80">
 
-      {/* MOBILE LEFT ICON */}
       <div className="md:hidden">
         <button onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* LOGO (CENTER MOBILE) */}
       <div className="flex-1 md:flex-none text-center md:text-left">
   <span className="text-2xl font-bold text-red-500 cursor-pointer">
     BalanceME
   </span>
 </div>
 
-      {/* DESKTOP NAV */}
       <div className="hidden md:flex gap-8 text-gray-700 font-medium">
         {role === "admin" && (
   <Link to="/admin">Admin Panel</Link>
@@ -76,7 +72,7 @@ const { user, role, isAuthenticated, login, logout, loadUser } = useAuthStore();
         })}
       </div>
 
-      {/* DESKTOP AUTH */}
+      
       <div className="hidden md:flex gap-4 items-center">
   {isAuthenticated ? (
     <>
@@ -108,7 +104,6 @@ const { user, role, isAuthenticated, login, logout, loadUser } = useAuthStore();
   )}
 </div>
 
-      {/* MOBILE MENU */}
       {isOpen && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-md flex flex-col items-center gap-6 py-6 md:hidden">
 

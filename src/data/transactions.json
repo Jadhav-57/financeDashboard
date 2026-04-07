@@ -5,7 +5,6 @@
   { "id": 4, "date": "2024-03-08", "amount": 2000, "category": "Freelance", "type": "income" },
   { "id": 5, "date": "2024-03-10", "amount": 1500, "category": "Shopping", "type": "expense" },
   { "id": 6, "date": "2024-03-15", "amount": 700, "category": "Food", "type": "expense" },
-
   { "id": 7, "date": "2024-03-16", "amount": 3000, "category": "Bonus", "type": "income" },
   { "id": 8, "date": "2024-03-17", "amount": 900, "category": "Transport", "type": "expense" },
   { "id": 9, "date": "2024-03-18", "amount": 2500, "category": "Investment", "type": "income" },

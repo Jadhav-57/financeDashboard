@@ -1,110 +1,148 @@
-💰 Finance Dashboard (Personal Expense Tracker)
+# BalanceME — Finance Dashboard
 
-A modern, responsive Finance Management Dashboard built to track, analyze, and manage personal income and expenses with real-time insights.
+> A role-based personal finance dashboard built with React and TypeScript. Track income, manage expenses, and gain category-wise insights — all in a clean, animated interface.
 
-Designed with a focus on performance, clean architecture, and type safety using TypeScript
+---
 
-🚀 Live Demo
+## Live Demo
 
-🔗 https://finance-dashboard.vercel.app
- (add your actual link)
+**[View Deployed App → finance-dashboard-mauve-eight.vercel.app](https://finance-dashboard-mauve-eight.vercel.app/)**
 
-📌 Key Highlights
-Built a fully functional transaction management system (Create, Read, Update, Delete)
-Implemented type-safe data handling using TypeScript (strict union types)
-Designed category-based analytics to identify highest expense areas
-Optimized UI with smooth animations using Framer Motion
-Structured codebase for scalability and maintainability
-Deployed on Vercel with CI/CD pipeline
-🧠 What This Project Demonstrates
+---
 
-This project is not just UI — it shows:
+## Screenshots
 
-Strong understanding of state management using React Hooks
-Ability to debug and fix production-level TypeScript errors
-Handling of data transformations and aggregation logic
-Writing clean, modular, and reusable components
-Experience deploying production apps with build optimizations
-🛠️ Tech Stack
-Category	Technology
-Frontend	React + TypeScript
-Build Tool	Vite
-Styling	Tailwind CSS
-Animations	Framer Motion
-Deployment	Vercel
-📊 Core Features
-🔹 Transaction Management
-Add new income/expense entries
-Edit existing transactions
-Delete transactions dynamically
-🔹 Data Insights
-Total income vs expenses calculation
-Category-wise expense grouping
-Highest spending category detection
-🔹 UI/UX
-Responsive design for all screen sizes
-Smooth card animations
-Clean and minimal dashboard layout
-📂 Project Architecture
-src/
-├── components/      # Reusable UI components
-├── pages/           # Application screens (Admin, Tracker)
-├── data/            # Static JSON data source
-├── utils/           # Helper functions (aggregation logic)
-└── App.tsx          # Root component
-⚙️ Local Setup
+**Home Page — Hero + Feature Cards**
+
+![Home Page] (https://github.com/Jadhav-57/financeDashboard/blob/main/home.png?raw=true)
+
+**Tracker — Finance Dashboard with Charts**
+
+![Tracker Page] (https://github.com/Jadhav-57/financeDashboard/blob/main/tracker.png?raw=true)
+
+**Admin Panel — Transaction Management**
+
+![Admin Panel] (https://github.com/Jadhav-57/financeDashboard/blob/main/admin.png?raw=true)
+
+> To display screenshots: create a `/screenshots` folder in your repo and add `home.png`, `tracker.png`, and `admin.png`.
+
+---
+
+## Features
+
+- **Role-based access** — separate UI and permissions for Admin and User roles
+- **Admin panel** — full CRUD operations to add, edit, and delete transactions
+- **Finance dashboard** — live summary of total balance, income, and expenses
+- **Balance trend chart** — line chart showing spending patterns over time
+- **Spending breakdown** — pie chart with category-wise expense visualisation
+- **Smart insights** — auto-generated tips based on highest spending category
+- **Transaction table** — filterable by type (income / expense) and searchable by category
+- **Animated homepage** — Framer Motion hero, feature cards, and horizontal scroll section
+- **Responsive design** — works across desktop and mobile viewports
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React 18 + TypeScript |
+| Styling | Tailwind CSS |
+| State Management | Zustand |
+| Animations | Framer Motion |
+| Build Tool | Vite |
+| Deployment | Vercel |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js v18+
+- npm or yarn
+
+### Installation
+
+```bash
+# 1. Clone the repository
 git clone https://github.com/Jadhav-57/financeDashboard.git
 cd financeDashboard
+
+# 2. Install dependencies
 npm install
+
+# 3. Start the development server
 npm run dev
-⚠️ Engineering Challenges Solved
-1. Type Safety Issues
-Enforced strict typing for transactions:
-type Transaction = {
-  id: number;
-  date: string;
-  amount: number;
-  category: string;
-  type: "income" | "expense";
-};
-2. Data Aggregation Bug
+```
 
-Fixed incorrect sorting due to type mismatch:
+The app will be available at `http://localhost:5173`.
 
-Object.entries(categoryMap).sort(
-  (a, b) => Number(b[1]) - Number(a[1])
-);
-3. State Update Consistency
+### Build for Production
 
-Handled mixed types during updates by enforcing numeric casting:
+```bash
+npm run build
+npm run preview
+```
 
-amount: Number(inputAmount)
-🔮 Future Enhancements
-Backend integration (Node.js + MongoDB)
-Authentication & user-specific dashboards
-Advanced charts (Recharts / D3.js)
-AI-powered spending insights
-Export reports (PDF/CSV)
-👨‍💻 Author
+---
 
-Aditya Jadhav
-B.Tech IT | Full-Stack Developer
+## Folder Structure
 
-📢 Final Note (Important)
+```
+financeDashboard/
+├── public/
+├── src/
+│   ├── components/         # Reusable UI components (Navbar, Charts, Cards)
+│   ├── pages/
+│   │   ├── Home.tsx        # Hero section, feature cards, horizontal scroll
+│   │   ├── Tracker.tsx     # Balance summary, charts, transaction table
+│   │   └── Admin.tsx       # CRUD transaction management panel
+│   ├── store/              # Zustand auth & transaction state
+│   ├── types/              # TypeScript interfaces
+│   ├── utils/              # Helper functions
+│   ├── App.tsx
+│   └── main.tsx
+├── index.html
+├── tailwind.config.ts
+├── vite.config.ts
+└── tsconfig.json
+```
 
-This project intentionally avoids backend complexity to focus on:
+---
 
-Frontend architecture
-State management
-Type safety
-UI/UX polish
-Brutal Truth (so you improve):
+## Role-Based Access
 
-Right now this becomes resume-worthy only if you can explain:
+| Feature | User | Admin |
+|---|---|---|
+| View dashboard & charts | Yes | Yes |
+| View transaction list | Yes | Yes |
+| Add transaction | No | Yes |
+| Edit transaction | No | Yes |
+| Delete transaction | No | Yes |
+| Access Admin Panel route | No | Yes |
 
-Why you used TypeScript unions
-How you handled state updates safely
-How your aggregation logic works
-What would break at scale and how you'd fix it
+Login state and role are managed globally via Zustand and determine which navigation items and routes are rendered.
 
-If you can’t explain those → this project is still beginner-level.
+---
+
+## Future Improvements
+
+- Backend integration with a REST API or Supabase for persistent data
+- JWT-based authentication replacing frontend-only role state
+- Export transactions to CSV or PDF
+- Budget goal setting with progress indicators
+- Monthly comparison reports
+- Dark mode toggle
+- Push notifications for spending thresholds
+
+---
+
+## Author
+
+**Aditya Jadhav**
+
+- GitHub: [@Jadhav-57](https://github.com/Jadhav-57)
+
+---
+

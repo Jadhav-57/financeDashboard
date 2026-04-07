@@ -32,7 +32,6 @@ const [form, setForm] = useState<{
 
   const [isEditing, setIsEditing] = useState(false);
 
-  // Handle input
  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
   const { name, value } = e.target;
 
@@ -42,7 +41,6 @@ const [form, setForm] = useState<{
   });
 };
 
-  // Add / Update
 const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();
 
@@ -67,7 +65,7 @@ const handleSubmit = (e: React.FormEvent) => {
   });
 };
 
-  // Edit
+  
 const handleEdit = (item: Transaction) => {
   setForm(item);
   setIsEditing(true);
@@ -77,13 +75,12 @@ const handleDelete = (id: number) => {
   setTransactions(transactions.filter((t) => t.id !== id));
 };
 
-  // Delete
-
+  
   return (
     <div className="p-6 max-w-6xl mx-auto space-y-6">
       <h1 className="text-2xl font-bold text-red-500">Admin Panel</h1>
 
-      {/* FORM */}
+      
       <form
         onSubmit={handleSubmit}
         className="grid md:grid-cols-5 gap-4 bg-white p-4 shadow rounded-xl"
@@ -137,7 +134,7 @@ const handleDelete = (id: number) => {
         </button>
       </form>
 
-      {/* TABLE */}
+    
       <div className="overflow-x-auto bg-white shadow rounded-xl">
         <table className="w-full text-left">
           <thead className="bg-gray-100">

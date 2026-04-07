@@ -1,5 +1,5 @@
 import './App.css'
-import Nav from './component/Navbar'
+import Nav from './components/Navbar'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { useAuthStore } from "./store/authStore";
 import { Navigate } from "react-router-dom";

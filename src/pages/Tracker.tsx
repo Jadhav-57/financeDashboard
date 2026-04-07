@@ -18,18 +18,15 @@ export default function Tracker() {
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
 
-  // 🔍 Filter
   const filteredData =
     filter === "all"
       ? transactions
       : transactions.filter((t) => t.type === filter);
 
-  // 🔍 Search
   const searchedData = filteredData.filter((t) =>
     t.category.toLowerCase().includes(search.toLowerCase())
   );
 
-  // 💰 Summary
   const totalIncome = transactions
     .filter((t) => t.type === "income")
     .reduce((acc, t) => acc + t.amount, 0);
@@ -40,13 +37,11 @@ export default function Tracker() {
 
   const balance = totalIncome - totalExpense;
 
-  // 📈 Line Chart
   const lineData = transactions.map((t) => ({
     date: t.date,
     amount: t.type === "expense" ? -t.amount : t.amount,
   }));
 
-  // 🥧 Pie Chart
   const categoryMap = {};
   transactions.forEach((t) => {
     categoryMap[t.category] =
@@ -58,7 +53,6 @@ export default function Tracker() {
     value: categoryMap[key],
   }));
 
-  // 🧠 Insights
  const highestCategory = Object.entries(categoryMap as Record<string, number>)
   .sort((a, b) => b[1] - a[1])[0];
 
@@ -69,7 +63,6 @@ export default function Tracker() {
   return (
     <div className="min-h-screen px-6 md:px-12 py-10 bg-gray-50">
 
-      {/* HEADER */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-red-500 ">
           Finance Dashboard
@@ -79,7 +72,6 @@ export default function Tracker() {
         </p>
       </div>
 
-      {/* SUMMARY CARDS */}
       <div className="grid md:grid-cols-3 gap-6 mb-10">
         <div className="bg-white p-5 rounded-xl shadow">
           <h3 className="text-gray-500 text-sm">Total Balance</h3>
@@ -99,10 +91,8 @@ export default function Tracker() {
 
       
 
-      {/* CHARTS */}
       <div className="grid md:grid-cols-2 gap-6 mb-10">
 
-        {/* LINE */}
         <div className="bg-white p-4 rounded-xl shadow">
           <h2 className="font-semibold mb-3">Balance Trend</h2>
           <ResponsiveContainer width="100%" height={250}>
@@ -120,7 +110,7 @@ export default function Tracker() {
           </ResponsiveContainer>
         </div>
 
-        {/* PIE */}
+
         <div className="bg-white p-4 rounded-xl shadow">
           <h2 className="font-semibold mb-3">
             Spending Breakdown
@@ -145,7 +135,6 @@ export default function Tracker() {
         </div>
       </div>
 
-      {/* INSIGHTS */}
       <div className="bg-white p-5 rounded-xl shadow mb-10">
         <h2 className="font-semibold mb-2">Insights</h2>
         <p className="text-gray-600">{insight}</p>
@@ -153,7 +142,7 @@ export default function Tracker() {
           Try reducing expenses in high categories to improve savings.
         </p>
       </div>
-      {/* FILTER + SEARCH */}
+      
       <div className="flex flex-col md:flex-row gap-4 mb-6">
         <div className="flex gap-3">
           {["all", "income", "expense"].map((item) => (
@@ -179,7 +168,7 @@ export default function Tracker() {
           className="px-4 py-2 border rounded-lg w-full md:w-64"
         />
       </div>
-      {/* TABLE */}
+      
       <div className="bg-white rounded-xl shadow overflow-hidden">
 
         <div className="grid grid-cols-4 p-4 font-semibold border-b text-gray-600">
