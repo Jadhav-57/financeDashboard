@@ -14,17 +14,15 @@
 
 **Home Page — Hero + Feature Cards**
 
-![Home Page] (https://github.com/Jadhav-57/financeDashboard/blob/main/home.png?raw=true)
+![Home](./screenshots/home.png)
 
 **Tracker — Finance Dashboard with Charts**
 
-![Tracker Page] (https://github.com/Jadhav-57/financeDashboard/blob/main/tracker.png?raw=true)
+![Tracker](./screenshots/tracker.png)
 
 **Admin Panel — Transaction Management**
 
-![Admin Panel] (https://github.com/Jadhav-57/financeDashboard/blob/main/admin.png?raw=true)
-
-> To display screenshots: create a `/screenshots` folder in your repo and add `home.png`, `tracker.png`, and `admin.png`.
+![Admin](./screenshots/admin.png)
 
 ---
 
